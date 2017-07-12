@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+
+
+    <title>新闻列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body onload="shownews('militarynews');showtypes()">
+<div class="main">
+    <div class="header">
+        <div class="header_resize">
+            <div class="logo">
+                <h2 style="color:orangered">哈了个球新闻聚合网站</h2>
+                <a>最专业的新闻网站</a>
+            </div>
+            <div class="clr"></div>
+            <div class="menu_nav">
+                <ul>
+                    <li class="active"><a onclick="showothernews('index')">主页</a></li>
+                    <li><a onclick="showothernews('about')">新闻推送</a></li>
+                    <li><a onclick="showothernews('personal')">个人中心</a></li>
+                    <li><a href="login.html">注销</a></li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="clr"></div>
+    <div class="content"  >
+        <div class="content_resize">
+            <div class="mainbar" id="allnews">
+            </div>
+            <div class="sidebar">
+                <div class="gadget">
+                    <h2>新闻类别</h2>
+                    <div class="clr"></div>
+                    <ul class="sb_menu">
+                        <li><a onclick = showothernews('index')>所有新闻</a></li>
+                        <li id="entertainment"><a onclick = showothernews('entertainment')>娱乐新闻</a></li>
+                        <li id="sports"><a onclick = showothernews('sports')>体育新闻</a></li>
+                        <li id="economy"><a onclick = showothernews('economy')>经济新闻</a></li>
+                        <li id="military"><a onclick = showothernews('military')>军事新闻</a></li>
+                        <li id="technology"><a onclick = showothernews('technology')>科技新闻</a></li>
+                        <li id="games"><a onclick = showothernews('games')>游戏新闻</a></li>
+                        <li id="education"><a onclick = showothernews('education')>教育新闻</a></li>
+                        <li id="phone"><a onclick = showothernews('phone')>手机新闻</a></li>
+                        <li id="tour"><a onclick = showothernews('tour')>旅游新闻</a></li>
+                        <li id="car"><a onclick = showothernews('car')>汽车新闻</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+    <div class="fbg">
+        <div class="fbg_resize">
+            <div class="col c1">
+                <h2><span>合作伙伴</span></h2>
+                <a href="http://www.baidu.com"><img src="images/baidu.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.sina.com"><img src="images/sina.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.netease.com"><img src="images/netease.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.xinhua.com"><img src="images/xinhua.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.zju.edu.cn"><img src="images/zju.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.bilibili.com"><img src="images/bilibili.jpeg" width="58" height="58" alt="pix" /></a> </div>
+            <div class="col c2">
+                <h2><span>网站声明</span></h2>
+                <p>该网站为浙江大学计算机学院BS体系软件设计的课程作业<br/>
+                    虽然未经同意使用了各大新闻网站的新闻数据,但网站不做任何商业用途,也不承担任何法律责任</p>
+            </div>
+            <div class="col c3">
+                <h2><span>联系方式</span></h2>
+                <p>邮箱 3140102430@zju.edu.cn<br />
+                    <a >电话 15268102533</a></p>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="footer">
+            <p class="lr">© Copyright <a href="#">MyWebSite</a>.</p>
+            <p class="lf"><a href="http://www.zju.edu.cn/"  target="_blank">浙江大学</a></p>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    function shownews(type) {
+
+
+        console.log("----------")
+
+
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                var json = xmlhttp.responseText;
+                console.log(json);
+                var json=JSON.parse(json);
+                if(json["code"]==0)
+                {
+
+                    var num =(json["res"]).length;
+                    var newsID=new Array(num);
+                    var newsTitle=new Array(num);
+                    var newsTime = new Array(num);
+                    var newsType = new Array(num);
+
+                    console.log(num);
+
+                    for(var k=0;k< (json["res"]).length;k++) {
+                        newsID[k] = (json["res"])[k].news_id;
+                        newsTitle[k] = (json["res"])[k].title;
+                        newsTime[k] = (json["res"])[k].time;
+                        newsType[k] = (json["res"])[k].type;
+
+
+                        console.log((json["res"])[k].news_id);
+                        console.log((json["res"])[k].title);
+                    }
+
+                    var board = document.getElementById("allnews");
+//                    board.removechild(board.childNodes[0]);
+
+
+
+                    for(var i=0;i<newsID.length;i++) {
+
+
+
+                        (function(j){
+
+
+                            var article = document.createElement("div");
+                            article.className = "article";
+                            var h2 = document.createElement("h2");
+                            var node = document.createTextNode(newsTitle[j]);
+                            h2.appendChild(node);
+
+                            h2.onclick=function(){
+                                readNews(newsID[j],type);
+                            }
+                            var detail = document.createElement("p");
+                            var newstime = document.createTextNode(newsTime[j]+" ");
+                            var newstype = document.createTextNode(newsType[j]+" ");
+
+                            detail.appendChild(newstime);
+                            detail.appendChild(newstype);
+
+                            article.appendChild(h2);
+                            article.appendChild(detail);
+
+                            var object = board.append(article);
+
+                        })(i)
+
+
+                    }
+
+
+
+                }
+
+                if(json["code"]==1)
+                {
+                    alert("列表为空");
+
+
+                }
+
+
+            }
+        };
+
+
+        xmlhttp.open("GET","showNews.php?type="+type,false);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send();
+    }
+
+    function readNews(id,type) {
+        var user_name=window.location.href.split("=")[1];
+        var xmlhttp;
+        var url = "shownews.html?user_name=" + user_name + "&id=" + id + "&type=" + type;
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+
+        }
+        else {// code for IE6, IE5
+
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var json = xmlhttp.responseText;
+                var json = JSON.parse(json);
+                console.log(json)
+                if (json["code"] == 0) {
+                    window.location.href = url;
+                }
+                if (json["code"] == 1) {
+                    alert("出错");
+                }
+
+            }
+        }
+        xmlhttp.open('GET', "AIlearn.php?user_name="+user_name+"&type="+type,true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+    }
+    function showothernews(type){
+        user_name = window.location.href.split("=")[1];
+        url = type + ".html?user_name=" + user_name;
+        window.location.href = url;
+    }
+
+    function showtypes() {
+        var xmlhttp;
+        var user_name=window.location.href.split("=")[1];
+        var games = 0, technology = 0, military = 0, economy = 0, sports = 0, entertainment = 0, education = 0, phone = 0, car = 0, tour = 0
+        if (window.XMLHttpRequest)
+        {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                var json = xmlhttp.responseText;
+                console.log(json);
+                var json=JSON.parse(json);
+                if(json["code"]==0)
+                {
+                    games = json["res"].games;
+                    technology = json["res"].technology;
+                    military = json["res"].military;
+                    economy = json["res"].economy;
+                    sports = json["res"].sports;
+                    entertainment = json["res"].entertainment;
+                    education = json["res"].education;
+                    phone = json["res"].phone;
+                    car = json["res"].car;
+                    tour = json["res"].tour;
+
+                    var gamesnews = document.getElementById("games");
+                    var technologynews = document.getElementById("technology");
+                    var militarynews = document.getElementById("military");
+                    var economynews = document.getElementById("economy");
+                    var sportsnews = document.getElementById("sports");
+                    var entertainmentnews = document.getElementById("entertainment");
+                    var educationnews = document.getElementById("education");
+                    var phonenews = document.getElementById("phone");
+                    var carnews = document.getElementById("car");
+                    var tournews = document.getElementById("tour");
+                    if(games==0){
+                        gamesnews.style.visibility = "hidden";
+                    }else{
+                        gamesnews.style.visibility = "none";
+                    }
+                    if(technology==0){
+                        technologynews.style.visibility = "hidden";
+                    }else{
+                        technologynews.style.visibility = "none";
+                    }
+                    if(military==0){
+                        militarynews.style.visibility = "hidden";
+                    }else{
+                        militarynews.style.visibility = "none";
+                    }
+                    if(economy==0){
+                        economynews.style.visibility = "hidden";
+                    }else{
+                        economynews.style.visibility = "none";
+                    }
+                    if(sports==0){
+                        sportsnews.style.visibility = "hidden";
+                    }else{
+                        sportsnews.style.visibility = "none";
+                    }
+                    if(entertainment==0){
+                        entertainmentnews.style.visibility = "hidden";
+                    }else{
+                        entertainmentnews.style.visibility = "none";
+                    }
+                    if(education==0){
+                        educationnews.style.visibility = "hidden";
+                    }else{
+                        educationnews.style.visibility = "none";
+                    }
+                    if(phone==0){
+                        phonenews.style.visibility = "hidden";
+                    }else{
+                        phonenews.style.visibility = "none";
+                    }
+                    if(car==0){
+                        carnews.style.visibility = "hidden";
+                    }else{
+                        carnews.style.visibility = "none";
+                    }
+                    if(tour==0){
+                        tournews.style.visibility = "hidden";
+                    }else{
+                        tournews.style.visibility = "none";
+                    }
+
+                }
+
+                if(json["code"]==1)
+                {
+                    alert("列表为空");
+                }
+
+
+            }
+        };
+
+
+        xmlhttp.open("GET","checkpersonalsetting.php?user_name="+user_name,false);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send();
+    }
+</script>
+
+</html>

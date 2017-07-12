@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>个人中心</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+
+
+<body onload="reload()">
+<div class="main">
+    <div class="header">
+        <div class="header_resize">
+            <div class="logo">
+                <h2 style="color:orangered">哈了个球新闻聚合网站</h2>
+                <a>最专业的新闻网站</a>
+            </div>
+            <div class="clr"></div>
+            <div class="menu_nav">
+                <ul>
+                    <li ><a onclick="showothernews('index')">主页</a></li>
+                    <li><a onclick="showothernews('about')">新闻推送</a></li>
+                    <li class="active"><a onclick="showothernews('personal')">个人中心</a></li>
+                    <li><a href="login.html">注销</a></li>
+                </ul>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+  <div class="clr"></div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="container" style="margin-top: 0px; text-align: center">
+
+        </div>
+
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-1" /><label for="checkbox-2-1">娱乐新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-2" /><label for="checkbox-2-2">体育新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-3" /><label for="checkbox-2-3">经济新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-4" /><label for="checkbox-2-4">军事新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-5" /><label for="checkbox-2-5">科技新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-6" /><label for="checkbox-2-6">游戏新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-7" /><label for="checkbox-2-7">教育新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-8" /><label for="checkbox-2-8">手机新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-9" /><label for="checkbox-2-9">旅游新闻</label>
+          </div>
+          <div class="center" style="width: 269px;">
+              <input type="checkbox" id="checkbox-2-10" /><label for="checkbox-2-10">汽车新闻</label>
+          </div>
+
+        </div>
+        <div class="confirmbutton"><a>选择您感兴趣的新闻类型,</br>我们会为您推荐这些类型的新闻</a>
+
+        </div>
+        <div><a class="confirmbutton" onclick="confirm()">确认</a> </div>
+      </div>
+
+      <div class="clr"></div>
+    </div>
+  </div>
+<div class="fbg">
+    <div class="fbg_resize">
+        <div class="col c1">
+            <h2><span>合作伙伴</span></h2>
+            <a href="http://www.baidu.com"><img src="images/baidu.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.sina.com"><img src="images/sina.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.netease.com"><img src="images/netease.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.xinhua.com"><img src="images/xinhua.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.zju.edu.cn"><img src="images/zju.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.bilibili.com"><img src="images/bilibili.jpeg" width="58" height="58" alt="pix" /></a> </div>
+        <div class="col c2">
+            <h2><span>网站声明</span></h2>
+            <p>该网站为浙江大学计算机学院BS体系软件设计的课程作业<br/>
+                虽然未经同意使用了各大新闻网站的新闻数据,但网站不做任何商业用途,也不承担任何法律责任</p>
+        </div>
+        <div class="col c3">
+            <h2><span>联系方式</span></h2>
+            <p>邮箱 3140102430@zju.edu.cn<br />
+                <a >电话 15268102533</a></p>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div class="footer">
+        <p class="lr">© Copyright <a href="#">MyWebSite</a>.</p>
+        <p class="lf"><a href="http://www.zju.edu.cn/"  target="_blank">浙江大学</a></p>
+        <div class="clr"></div>
+    </div>
+</div>
+</div>
+</body>
+<script>
+  function confirm() {
+
+
+    var user_name = window.location.href.split("=")[1];
+
+    var games = 0, technology = 0, military = 0, economy = 0, sports = 0, entertainment = 0, education = 0, phone = 0, car = 0, tour = 0
+
+    console.log(entertainment)
+    console.log(sports)
+    console.log(economy)
+    console.log(military)
+    console.log(games)
+
+    if (document.getElementById("checkbox-2-1").checked) {
+      console.log("entertainment OK")
+      entertainment = 1;
+    }
+    if (document.getElementById("checkbox-2-2").checked) {
+      console.log("sports OK")
+      sports = 1;
+    }
+    if (document.getElementById("checkbox-2-3").checked) {
+      console.log("economy OK")
+      economy = 1;
+    }
+    if (document.getElementById("checkbox-2-4").checked) {
+      console.log("military OK")
+      military = 1;
+    }
+    if (document.getElementById("checkbox-2-5").checked) {
+      console.log("technology OK")
+      technology = 1;
+    }
+    if (document.getElementById("checkbox-2-6").checked) {
+      console.log("games OK")
+      games = 1;
+    }
+
+    if (document.getElementById("checkbox-2-7").checked) {
+      console.log("education OK")
+      education = 1;
+    }
+    if (document.getElementById("checkbox-2-8").checked) {
+      console.log("phone OK")
+      phone = 1;
+    }
+    if (document.getElementById("checkbox-2-9").checked) {
+      console.log("tour OK")
+      tour = 1;
+    }
+    if (document.getElementById("checkbox-2-10").checked) {
+      console.log("car OK")
+      car = 1;
+    }
+
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        alert("设置成功")
+//          var json = xmlhttp.responseText;
+//        console.log(json);
+        //json=eval('('+json+')');
+//        var json = JSON.parse(json);
+//          alert(json["code"])
+//        if (json["code"] == 0) {
+//          alert("修改成功");
+//        }
+//        if (json["code"] == 1) {
+//          alert("修改失败");
+//        }
+        //document.write(json);
+
+      }
+    };
+//            xmlhttp.open("GET", "login/login.php", true);
+//            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//            xmlhttp.send("id=" + encodeURIComponent(str1) + "&password=" + encodeURIComponent(str2));
+
+    xmlhttp.open('GET',
+            "personalsetting.php?user_name=" + user_name + "&games=" + games + "&technology=" + technology + "&military=" + military + "&economy=" + economy + "&sports=" + sports + "&entertainment=" + entertainment + "&education=" + education + "&phone=" + phone + "&car=" + car + "&tour=" + tour,
+            false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+
+
+  }
+
+  function reload(){
+    var user_name = window.location.href.split("=")[1];
+    var games = 0, technology = 0, military = 0, economy = 0, sports = 0, entertainment = 0, education = 0, phone = 0, car = 0, tour = 0
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var json = xmlhttp.responseText;
+        //console.log(json);
+        //json=eval('('+json+')');
+        var json = JSON.parse(json);
+        if (json["code"] == 0) {
+          //alert(json["res"].sports);
+
+          if (json["res"].entertainment == 1) {
+            var a = document.getElementById("checkbox-2-1");
+            a.checked = true;
+          }
+          if (json["res"].sports == 1) {
+            var b = document.getElementById("checkbox-2-2");
+            b.checked = true;
+          }
+          if (json["res"].economy == 1) {
+            var c = document.getElementById("checkbox-2-3");
+            c.checked = true;
+          }
+          if (json["res"].military == 1) {
+            var d = document.getElementById("checkbox-2-4");
+            d.checked = true;
+          }
+          if (json["res"].technology == 1) {
+            var e = document.getElementById("checkbox-2-5");
+            e.checked = true;
+          }
+          if (json["res"].games == 1) {
+            var f = document.getElementById("checkbox-2-6");
+            f.checked = true;
+          }
+          if (json["res"].education == 1) {
+            var g = document.getElementById("checkbox-2-7");
+            g.checked = true;
+          }
+          if (json["res"].phone == 1) {
+            var j = document.getElementById("checkbox-2-8");
+            j.checked = true;
+          }
+          if (json["res"].tour == 1) {
+            var h = document.getElementById("checkbox-2-9");
+            h.checked = true;
+          }
+          if (json["res"].car == 1) {
+            var i = document.getElementById("checkbox-2-10");
+            i.checked = true;
+          }
+
+          console.log("over");
+        }
+        if (json["code"] == 1) {
+          alert("出错");
+        }
+        //document.write(json);
+      }
+    };
+//            xmlhttp.open("GET", "login/login.php", true);
+//            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//            xmlhttp.send("id=" + encodeURIComponent(str1) + "&password=" + encodeURIComponent(str2));
+
+    xmlhttp.open('GET', "checkpersonalsetting.php?user_name="+user_name, false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+
+
+  }
+
+  function showothernews(type){
+      user_name = window.location.href.split("=")[1];
+      url = type + ".html?user_name=" + user_name;
+      window.location.href = url;
+  }
+
+</script>
+</html>

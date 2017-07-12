@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>news</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body onload="readNews()"
+>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h2 style="color:orangered">哈了个球新闻聚合网站</h2>
+        <a>最专业的新闻网站</a>
+      </div>
+      <div class="clr"></div>
+      <div class="menu_nav">
+        <ul>
+          <li class="active"><a onclick="showothernews('index')">主页</a></li>
+          <li><a onclick="showothernews('about')">新闻推送</a></li>
+          <li><a onclick="showothernews('personal')">个人中心</a></li>
+          <li><a href="login.html">注销</a></li>
+        </ul>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="clr"></div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+
+            <h2>
+                <div id="myNewTitle" style="text-align: center">
+                </div>
+            </h2>
+            <h4>
+                <div id="myNewTime" style="text-align: center">
+                </div>
+
+
+                <div id="myNewType" style="text-align: center">
+                </div>
+            </h4>
+
+            <div id="myNewContent" style="text-align: left">
+            </div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="gadget">
+          <h2>新闻类别</h2>
+          <div class="clr"></div>
+          <ul class="sb_menu">
+              <li><a onclick = showothernews('index')>所有新闻</a></li>
+              <li><a onclick = showothernews('entertainment')>娱乐新闻</a></li>
+              <li><a onclick = showothernews('sports')>体育新闻</a></li>
+              <li><a onclick = showothernews('economy')>经济新闻</a></li>
+              <li><a onclick = showothernews('military')>军事新闻</a></li>
+              <li><a onclick = showothernews('technology')>科技新闻</a></li>
+              <li><a onclick = showothernews('games')>游戏新闻</a></li>
+              <li><a onclick = showothernews('education')>教育新闻</a></li>
+              <li><a onclick = showothernews('phone')>手机新闻</a></li>
+              <li><a onclick = showothernews('tour')>旅游新闻</a></li>
+              <li><a onclick = showothernews('car')>汽车新闻</a></li>
+          </ul>
+        </div>
+
+
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+    <div class="fbg">
+        <div class="fbg_resize">
+            <div class="col c1">
+                <h2><span>合作伙伴</span></h2>
+                <a href="http://www.baidu.com"><img src="images/baidu.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.sina.com"><img src="images/sina.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.netease.com"><img src="images/netease.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.xinhua.com"><img src="images/xinhua.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.zju.edu.cn"><img src="images/zju.jpeg" width="58" height="58" alt="pix" /></a> <a href="http://www.bilibili.com"><img src="images/bilibili.jpeg" width="58" height="58" alt="pix" /></a> </div>
+            <div class="col c2">
+                <h2><span>网站声明</span></h2>
+                <p>该网站为浙江大学计算机学院BS体系软件设计的课程作业<br/>
+                    虽然未经同意使用了各大新闻网站的新闻数据,但网站不做任何商业用途,也不承担任何法律责任</p>
+            </div>
+            <div class="col c3">
+                <h2><span>联系方式</span></h2>
+                <p>邮箱 3140102430@zju.edu.cn<br />
+                    <a >电话 15268102533</a></p>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="footer">
+            <p class="lr">© Copyright <a href="#">MyWebSite</a>.</p>
+            <p class="lf"><a href="http://www.zju.edu.cn/"  target="_blank">浙江大学</a></p>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+  function readNews() {
+    var user_name=window.location.href.split("=")[1];
+    var id=window.location.href.split("=")[2];
+    var type=window.location.href.split("=")[3];
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var json = xmlhttp.responseText;
+        //console.log(json);
+
+        var json = JSON.parse(json);
+        if (json["code"] == 0) {
+
+//                    var divcontent = document.getElementById("myNewContent")
+//                    myNewContent.innerHTML=json["res"].contents;
+
+          var divcontent = document.getElementById("myNewContent")
+          var packages =json["res"].contents;
+//                    console.log(packages.length)
+//          alert(packages.length);
+//                    for(var i=0;i<packages.length;i++)
+//                        if(packages[i]==' ') {
+//                            packages[i] = '*';
+//                            console.log("Flag")
+//                        }
+          var arr = packages.split('　　');
+          for(var i=1;i<arr.length;i++) {
+            arr[i] = arr[i - 1] + '<br>'+'　　' + arr[i];
+            console.log(i);
+          }
+          myNewContent.innerHTML= "<br>"+arr[arr.length-1];
+
+          var divtitle = document.getElementById("myNewTitle")
+          myNewTitle.innerHTML=json["res"].title;
+
+          var divtime = document.getElementById("myNewTime")
+          myNewTime.innerHTML=json["res"].time;
+
+          var divtype = document.getElementById("myNewType")
+          myNewType.innerHTML=json["res"].type;
+
+
+
+
+
+        }
+        if (json["code"] == 1) {
+          alert("错误");
+        }
+
+      }
+    };
+    xmlhttp.open('GET', "getNews.php?id="+id+"&type="+type,false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+  }
+
+  function showothernews(type){
+    user_name = window.location.href.split("=")[1];
+    url = type + ".html?user_name=" + user_name;
+    window.location.href = url;
+  }
+</script>
+</body>
+</html>

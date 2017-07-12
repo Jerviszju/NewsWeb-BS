@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul class="sb_menu" id="ul">
+    <li id="index"><a onclick = showothernews('index')>所有新闻</a></li>
+    <li><a onclick = showothernews('entertainment')>娱乐新闻</a></li>
+    <li id="sports"><a onclick = showothernews('sports')>体育新闻</a></li>
+    <li><a onclick = showothernews('economy')>经济新闻</a></li>
+    <li><a onclick = showothernews('military')>军事新闻</a></li>
+    <li><a onclick = showothernews('technology')>科技新闻</a></li>
+    <li><a onclick = showothernews('games')>游戏新闻</a></li>
+    <li><a onclick = showothernews('education')>教育新闻</a></li>
+    <li><a onclick = showothernews('phone')>手机新闻</a></li>
+    <li><a onclick = showothernews('tour')>旅游新闻</a></li>
+    <li><a onclick = showothernews('car')>汽车新闻</a></li>
+</ul>
+<div id = "hi" onclick="wa()">hello</div>
+</body>
+<script>
+    var a = document.getElementById('sports');
+    a.style.visibility = "hidden";
+    function wa() {
+        url = "http://www.baidu.com";
+        window.location.href = url;
+    }
+</script>
+</html>
